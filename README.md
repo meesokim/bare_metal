@@ -6,7 +6,7 @@ This the repository for my corresponding blog over at [adamransom.github.io](htt
 
 In order to run these examples, you will most notably need a Raspberry Pi 3 Model B. Whilst a lot of the same code can be used on a Raspberry Pi 2, there are some big differences early on (for example when trying to turn on the ACT LED).
 
-Secondly you will need the [arm-none-eabi](https://launchpad.net/gcc-arm-embedded/+download) toolchain to assemble, link and generate a binary image to put on your SD card.
+Secondly you will need the [arm-none-eabi](https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/6_1-2017q1/gcc-arm-none-eabi-6-2017-q1-update-win32.exe) toolchain to assemble, link and generate a binary image to put on your SD card.
 
 Finally you will need [make](https://www.gnu.org/software/make/) if you want to make building the examples easier.
 

@@ -19,8 +19,14 @@ LIST = kernel.list
 # Name of the linker script to use
 LINK_SCRIPT = kernel.ld
 
+BOOT = boot/
+
+BOOTCODE = bootcode.bin
+
+START = start.elf
+
 # Rule to build everything (creates the target image and listing)
-all: $(TARGET) $(LIST)
+all: $(BOOT)$(BOOTCODE) $(BOOT)$(START) $(TARGET) $(LIST) 
 
 # Rule to create the image file
 $(TARGET): $(BUILD)kernel.elf
@@ -37,7 +43,13 @@ $(BUILD)kernel.o: $(SOURCE)kernel.s $(BUILD)
 # Rule to make the listing file.
 $(LIST): $(BUILD)kernel.elf
 	$(ARMGNU)-objdump -D $(BUILD)kernel.elf > $(LIST)
+	
+$(BOOT)$(BOOTCODE): 
+	wget https://github.com/raspberrypi/firmware/blob/master/boot/$(BOOTCODE)?raw=true -o $(BOOT)$(BOOTCODE) 
 
+$(BOOT)$(START):
+	wget https://github.com/raspberrypi/firmware/blob/master/boot/$(START)?raw=true -o $(BOOT)$(START) 
+	
 # Create the build directory
 $(BUILD):
 	mkdir $@
